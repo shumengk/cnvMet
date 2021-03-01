@@ -1,0 +1,29 @@
+Title,URL,Experimental Notes,DMR Potential Locations,,,Gene,More notes
+Identification of differentially expressed genes regulated by methylation in colon cancer based on bioinformatics analysis,https://www.wjgnet.com/1007-9327/full/v25/i26/3392.htm,"used TCGA data (RNAseq, 450K Methylation BeadChip, and clinical data) to identify methylation-regulated differentially expressed genes (MeDEGs); see Fig 2 for list of MeDEGs",chr5               ,37812778,37834924,GDNF (glial cell-derived neurotrophic factor),hg19; I just looked up the gene on UCSC genome browser and input the coordinates; perhaps we should see if this area is CNV-enriched and CpG-enriched? as well as upstream/downstream ~2000bp to account for promoters or other regulatory elements?
+,,,chr7                ,103112230,103629963,RELN (reelin),
+Molecular Subtypes in Stage II-III Colon Cancer Defined by Genomic Instability: Early Recurrence-Risk Associated with a High Copy-Number Variation and Loss of RUNX3 and CDKN2A,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0122391,"""We sought to investigate various molecular subtypes defined by instability at microsatellites (MSI), changes in methylation patterns (CpG island methylator phenotype, CIMP) or copy number variation (CNV) in 8 genes. Stage II-III colon cancers (n = 64) were investigated by methylation-specific multiplex ligated probe amplification (MS-MLPA).""",chr1                ,25226001,25256770,RUNX3,
+,,,chr9                ,21967750,21974826,CDKN2A,
+Biomarkers in Colorectal Cancer (Review),http://ar.iiarjournals.org/content/36/3/1093.long,,chr7                ,55086724,55224644,EGFR (Epidermal growth factor receptor),
+,,,chr7                ,140433812,140624564,BRAF,BRAF is an oncogene present in the RAS-RAF-MAPK pathway
+,,,chr3                ,178866310,178952497,PIK3CA,"PIK3CA is a proto-oncogene encoding phosphatidylinositol-3-kinases (PI3K) involved in the EGFR tyrosine-kinase domain, which may lead to phosphorylation of AKT and the activation of AKT-mTOR signaling pathway"
+,,,chr10                ,89623194,89728532,PTEN,PTEN is a tumour-suppressor gene encoding a phosphatase protein that suppresses the PI3K-AKT signalling pathway.
+,,,chr16                ,58497548,58547523,NDRG4,DNA methylation biomarker for CRC diagnosis/prognosis
+,,,chr4               ,81952118,81978685,BMP3,DNA methylation biomarker for CRC diagnosis/prognosis
+,,,chr4                ,154701741,154710228,SFRP2,DNA methylation biomarker for CRC diagnosis
+,,,chr17                ,75277491,75496678,9-Sep,DNA methylation biomarker for CRC diagnosis
+,,,chr12                ,24962957,25055322,BCAT1,DNA methylation biomarker for CRC diagnosis
+,,,chr7               ,50344377,50437142,IKZF1,DNA methylation biomarker for CRC diagnosis
+,,,chr12                ,25358179,25403854,KRAS,DNA methylation biomarker for CRC therapy
+,,,chr1               ,36038970,36060927,TFAP2E,DNA methylation biomarker for CRC therapy
+,,,chr5                ,151040656,151054235,SPARC,DNA methylation biomarker for CRC therapy
+,,,,,,HOPXB,"DNA methylation biomarker for CRC prognosis; mentioned in the review, but I can't find locus data"
+Epigenetic Alterations in Colorectal Cancer: Emerging Biomarkers (Review),https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4589488/,"CIMP: Cpg Island Methylator Phenotype, prevailing method to identify CIMP is assessing methylation status of 5 genes: CACNA1G, IGF2, NEUROG1, RUNX3, and SOCS1",chr11                ,2150341,2160204,CACNA1G,
+,,,chr17                ,48638428,48704832,IGF2,also discovered to contain CNV (see next study)
+,,,chr5                ,134869971,134871639,NEUROG1,
+,,,chr16                ,11348273,11350039,SOCS1,
+Comprehensive molecular characterization of human colon and rectal cancer,https://www.nature.com/articles/nature11252,data from TCGA,chr17                ,37844392,37873910,ERBB2,CNV
+Identification of copy number alterations in colon cancer from analysis of amplicon-based next generation sequencing data,https://www.oncotarget.com/article/24912/text/,"""We report the successful detection of somatic changes in gene copy number in 37 colon cancer patients by analysis of sequencing data through Amplicon CNA Algorithm. Overall, we have found a total of 748 significant copy number alterations in 230 significant genes, of which 143 showed CN losses and 87 showed CN gains.""",chr20                ,30946146,31016225,ASXL1,"copy number gain of ASXL1 was associated with good prognosis, might want to read into this study for more CNV-enriched genes"
+,,,chr5                ,35856976,35879705,TSC1,loss of TSC1 was associated with advanced stages and/or reduced survival
+,,,chr9                ,135766734,135820020,IL7R,loss of IL7R was associated with advanced stages and/or reduced survival
+Wnt signaling pathway upregulates DNMT1 to trigger NHERF1 promoter hypermethylation in colon cancer,https://www.spandidos-publications.com/or/40/2/1165,used TCGA methylation and RNAseq data,chr17                ,72744750,72765499,NHERF1,NHERF1 important for EMT phenotype
+"Hypomethylation of the IGF2 DMR in Colorectal Tumors, Detected by Bisulfite Pyrosequencing, Is Associated With Poor Prognosis",https://www.sciencedirect.com/science/article/abs/pii/S0016508510011455,Measured methylation at the IGF2 DMR using a bisulfite-pyrosequencing assay with 1178 paraffin-embedded colorectal cancer tissue samples from 2 prospective cohort studies.,GenBank: Y13633.1,,,"IGF2 gene, exon 3",IGF2 typically methylated. Loss of methylation associated with colon cancer
