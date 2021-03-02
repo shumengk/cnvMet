@@ -37,7 +37,7 @@ rocPlot <- data.frame() # Store tpr/fpr values for ROC Plots
 metCount <- data.frame() # Store methylation probe count data
 
 # Declare DNA segment (from )
-geneName <- "6_149661_254283:1 CNV Downstream" 
+geneName <- "4_9459504_9477699:2 CNVs upstream" 
 chr <- paste0('chr',sapply(strsplit(geneName,"_"),`[`,1))
 start <- as.numeric(sapply(strsplit(geneName,"_"),`[`,2))
 end <- as.numeric(sapply(strsplit(geneName,"_"),`[`,3))
@@ -64,7 +64,7 @@ cpg_query <- paste("SELECT
                  FROM
                  `isb-cgc.platform_reference.GDC_hg38_methylation_annotation` cn
                  WHERE   		         	
-                 (cn.chromosome = 'chr6' AND			
+                 (cn.chromosome = 'chr20' AND			
                    cn.position>",lb, "AND 	
                    cn.position<",ub,")")
 
@@ -89,13 +89,13 @@ query <- paste("WITH PID as (SELECT
                  FROM
                  `isb-cgc.platform_reference.GDC_hg38_methylation_annotation` cn
                  WHERE   		         	
-                 (cn.chromosome = 'chr6' AND			
-                   cn.position>",start-cnv_len, "AND 	
-                   cn.position<",start,"))
+                 (cn.chromosome = 'chr4' AND			
+                   cn.position>",end+cnv_len, "AND 	
+                   cn.position<",end+cnv_len*2,"))
                
                SELECT
                met.probe_ID, met.beta_value, met.case_gdc_id, met.sample_barcode
-               FROM `isb-cgc.TCGA_hg38_data_v0.DNA_Methylation_chr6` met
+               FROM `isb-cgc.TCGA_hg38_data_v0.DNA_Methylation_chr4` met
                JOIN PID ON (PID.probe_ID = met.probe_ID)")
 
 # Get data from Google Bigquery
@@ -124,7 +124,7 @@ met_dat$Tissue <- ifelse(met_dat$Tissue=="TCGA-COAD","COAD","Normal")
 # If too many predictors: Pick n random beta values for model building
 if (ncol(met_dat)>=50) {
   set.seed(123)
-  random_bv <- sample(3:ncol(met_dat)-3,4)
+  random_bv <- sample(3:ncol(met_dat)-3,50)
   met_dat1 <- met_dat[,c(random_bv,which(colnames(met_dat)=="Tissue"))]
 } else {
     met_dat1 <- met_dat
@@ -136,6 +136,7 @@ predictors <- setdiff(names(met_dat1), c(response,"case_gdc_id",
                       "sample_barcode","aliquot_id","sampleType"))
 met_dat1[[response]] <- as.factor(met_dat1[[response]])  
 
+##########
 ## Differentiate COAD tumor tissue vs normal tissue
 # coad_dat <- filter(met_dat,Tissue=="COAD")
 # coad_dat$Tissue <- ifelse(coad_dat$sampleType==11,"Normal",coad_dat$Tissue)
@@ -145,12 +146,13 @@ met_dat1[[response]] <- as.factor(met_dat1[[response]])
 # predictors_coad <- setdiff(names(met_dat1), c(response,"case_gdc_id",
 #                            "sample_barcode","aliquot_id","sampleType"))
 # coad_dat1[[response]] <- as.factor(coad_dat1[[response]])  
+##########
 
 # Start h2o
 h2o.init(nthreads=6,min_mem_size = "4g")
 
 # CHANGE FOR EVERY CNV
-j=7
+j=46
 cnv_auc[j,1] <- geneName
 # Pick random number to decide which iteration to save tpr,fpr
 plotNum <- sample(2:6,1)
@@ -197,7 +199,12 @@ for (i in 2:6){
   h2o:::.h2o.garbageCollect()
 }
 
+saveRDS(cnv_auc,"cnv_auc.rds")
+saveRDS(rocPlot,"cnv_rocPlot.rds")
+
 h2o.shutdown()
+
+
 # Plot upstream/downstream regions of a CNV
 ggplot(cnvROC1,aes(fpr,tpr,colour=chrLoc))+geom_line() + 
  geom_segment(aes(x=0,y=0,xend = 1, yend = 1),linetype = 2,col='grey')+
