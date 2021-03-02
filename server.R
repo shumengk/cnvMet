@@ -45,7 +45,6 @@ shinyServer(function(input, output) {
         if (cnvInput=="DMR-overlapped"){
             cnvAUCValue <- "0.59682"
             cnvROC <- cnvROCPlot 
-            
         }
         else {
             cnvROC <- filter(cnvIndROC,chrLoc==cnvInput)
@@ -68,5 +67,6 @@ shinyServer(function(input, output) {
         paste0("The AUC value of the CNV-based classification model is ",cnvAUCValue)
     })
     
+   
     
 })

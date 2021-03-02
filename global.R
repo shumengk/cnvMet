@@ -8,4 +8,5 @@ cnvIndROC <- readRDS("cnv_rocPlot.rds")
 
 
 geneList <- unique(geneAUC$gene)
-cnvList <- sort(c(unique(cnvAUC$chrLoc),"DMR-overlapped"))
+cnvList <- sort(c(unique(sapply(strsplit(cnvAUC$chrLoc,":"),`[`,1)),"DMR-overlapped"))
+cnvDUList <- unique(sapply(strsplit(cnvAUC$chrLoc[grep(":",cnvAUC$chrLoc)],":"),`[`,1))

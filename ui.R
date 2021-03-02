@@ -24,9 +24,14 @@ dashboardPage(
             selectInput("segment",
                         "Select a CNV segment:",
                         choices=cnvList
-                
+            ),
+            conditionalPanel(
+                condition = "input.segment==cnvDUList[1]",
+                sliderInput("UD","How many CNV down/upstream?",
+                            min=-2,max=2,value=0,step=1)
             )
         )
+
     ),
     
     dashboardBody(
